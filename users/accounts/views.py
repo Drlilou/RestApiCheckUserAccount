@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from .models import Account
 from .serializers import AccountSerializer
 
+
+
 class AccountDetailView(generics.RetrieveAPIView):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
@@ -11,3 +13,8 @@ class AccountDetailView(generics.RetrieveAPIView):
         account = self.get_object()
         serializer = self.get_serializer(account)
         return Response(serializer.data)
+
+
+class AccountListView(generics.ListAPIView):
+    queryset = Account.objects.all()
+    serializer_class = AccountSerializer
